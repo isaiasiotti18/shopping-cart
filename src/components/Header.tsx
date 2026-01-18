@@ -1,16 +1,14 @@
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { useShoppingCartStore } from '@/stores/shoppingCart.store'
+import {
+  selectItemsCount,
+  useShoppingCartStore,
+} from '@/stores/shoppingCart.store'
 import { Link, useMatchRoute } from '@tanstack/react-router'
 import { ShoppingCart } from 'lucide-react'
 
 export default function Header() {
-  const itemsCount = useShoppingCartStore((state) =>
-    state.cartItems.reduce(
-      (accumulator, current) => accumulator + current.quantity,
-      0,
-    ),
-  )
+  const itemsCount = useShoppingCartStore(selectItemsCount)
 
   const mathRoute = useMatchRoute()
   const isShoppingCartRoute = mathRoute({ to: '/shopping-cart', fuzzy: false })

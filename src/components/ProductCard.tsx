@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import type { Product } from '@/stores/shoppingCart.store'
 import { useShoppingCartStore } from '@/stores/shoppingCart.store'
 
@@ -30,9 +29,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 mb-4">
-          Descrição do produto com detalhes e características principais
-        </p>
+        <p className="text-sm text-gray-600 mb-4">{product.description}</p>
 
         {/* Price */}
         <p className="text-2xl font-bold text-gray-900 mb-4">

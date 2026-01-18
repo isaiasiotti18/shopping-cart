@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import ProductListItem from '@/components/ProductListItem'
 import { useShoppingCartStore } from '@/stores/shoppingCart.store'
+import TotalShoppingCart from '@/components/TotalShoppingCart'
 
 export const Route = createFileRoute('/shopping-cart/')({
   component: ShoppingCart,
@@ -15,15 +16,19 @@ function ShoppingCart() {
         Carrinho de Compras
       </h1>
 
-      <div className="flex flex-col gap-5">
-        {cartItems.length > 0 &&
-          cartItems.map((product) => (
-            <ProductListItem
-              key={product.id}
-              product={product}
-              quantity={product.quantity}
-            />
-          ))}
+      <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-5">
+          {cartItems.length > 0 &&
+            cartItems.map((product) => (
+              <ProductListItem
+                key={product.id}
+                product={product}
+                quantity={product.quantity}
+              />
+            ))}
+        </div>
+
+        <TotalShoppingCart />
       </div>
     </div>
   )

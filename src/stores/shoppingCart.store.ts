@@ -12,7 +12,7 @@ export interface Product {
 export type cartItem = Product & { quantity: number }
 
 interface ShoppingCartStore {
-  cartItems: Array<cartItem> | []
+  cartItems: Array<cartItem>
   clearCart: () => void
   addProduct: (product: Product) => void
   removeProduct: (idProduct: number) => void
@@ -46,9 +46,7 @@ export const useShoppingCartStore = create<ShoppingCartStore>((set) => ({
 
   removeProduct: (idProduct: number) =>
     set((state: ShoppingCartStore) => ({
-      cartItems: state.cartItems.filter(
-        (product: Product) => product.id !== idProduct,
-      ),
+      cartItems: state.cartItems.filter((product) => product.id !== idProduct),
     })),
 
   increaseQuantity: (idProduct: number) =>
@@ -71,3 +69,9 @@ export const useShoppingCartStore = create<ShoppingCartStore>((set) => ({
         .filter((product) => product.quantity > 0),
     })),
 }))
+
+export const selectItemsCount = (state: ShoppingCartStore) =>
+  state.cartItems.reduce((acc, item) => acc + item.quantity, 0)
+
+export const selectTotalPrice = (state: ShoppingCartStore) =>
+  state.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
