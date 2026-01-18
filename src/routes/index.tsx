@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import ProductCard from '@/components/ProductCard'
+import productItems from '@/utils/product-items'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -14,14 +15,15 @@ function App() {
         </h1>
 
         <div className="flex flex-wrap gap-5 mt-5 justify-center">
-          {Array.from({ length: 10 }).map((_, index) => (
+          {productItems.map((product) => (
             <ProductCard
-              key={index}
+              key={product.id}
               product={{
-                id: index,
-                name: `This is a product card - Product ${index + 1}`,
-                description: `Descrição do produto com detalhes e características principais - Product ${index + 1}`,
-                price: Math.floor(Math.random() * (300 - 50 + 1)) + 50,
+                id: product.id,
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                imageUrl: product.imageUrl,
               }}
             />
           ))}

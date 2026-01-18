@@ -28,7 +28,7 @@ const ProductListItem = ({ product, quantity }: ProductListItemProps) => {
       {/* Left: Image + Info */}
       <div className="flex items-center gap-4">
         <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&h=120&fit=crop"
+          src={product.imageUrl}
           alt="Product"
           className="w-20 h-20 rounded-md object-cover"
         />

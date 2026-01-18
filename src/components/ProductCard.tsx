@@ -8,7 +8,6 @@ export type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const addProduct = useShoppingCartStore((state) => state.addProduct)
-  const cartItems = useShoppingCartStore((state) => state.cartItems)
 
   const handleAddProduct = () => addProduct(product)
 
@@ -17,7 +16,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       {/* Image Container */}
       <div className="relative">
         <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop"
+          src={product.imageUrl}
           alt="Product"
           className="w-full h-64 object-cover"
         />

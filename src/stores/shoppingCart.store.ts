@@ -6,6 +6,7 @@ export interface Product {
   name: string
   description: string
   price: number
+  imageUrl: string
 }
 
 export type cartItem = Product & { quantity: number }
